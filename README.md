@@ -3,7 +3,7 @@ use React, Redux and webpack to build a todolist application
 
 ## Dependences
 
-node.js
+node.js  
 cnpm
 
 ## Run
