@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Footer extends Component {
 
-	filter(type) {
+	filter(type) {       
 		return () => {
 			this.props.visibleFilter(type)
 		}
@@ -22,13 +22,14 @@ class Footer extends Component {
     }
 
     render() {
+        console.log(this.props.classname)
         return(
             <footer className="footer">
                 <span className="todo-count">{this.findleft(this.props.todos)} items left</span>
                 <ul className="filters">
-                    <li> <a href="#/" onClick={this.filter("All")}> All </a> </li>
-                    <li> <a href="#/active" onClick={this.filter("Active")}> Active </a> </li> 
-                    <li> <a href="#/completed" onClick={this.filter("Completed")}> Completed </a> </li>
+                    <li> <a href="#/" onClick={this.filter("All")} className={this.props.classname[0]}> All </a> </li>
+                    <li> <a href="#/active" onClick={this.filter("Active")} className={this.props.classname[1]}> Active </a> </li> 
+                    <li> <a href="#/completed" onClick={this.filter("Completed")} className={this.props.classname[2]}> Completed </a> </li>
                 </ul>
                 <button className="clear-completed" onClick = {this.delCom()}>
                     Clear completed

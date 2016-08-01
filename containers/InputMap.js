@@ -3,6 +3,9 @@ import Input from '../components/Input'
 import { addTodo } from '../actions'
 
 function mapStateToProps(state) {
+	console.log(state);
+	localStorage.setItem("todos", JSON.stringify(state.todos));
+	localStorage.setItem("visibleFilter", JSON.stringify(state.visibleFilter));
   return {
   };
 }

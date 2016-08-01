@@ -1,14 +1,30 @@
 import { combineReducers } from 'redux'
 
-let initState = [{
+
+if(!localStorage.getItem("todos")) {
+    let initTodos = [{
         title: "learn react",
         completed: false
     },{
         title: "learn redux",
         completed: false
-    }]
+    }];
+    localStorage.setItem("todos", JSON.stringify(initTodos));
+}
 
-const todos = (state = initState, action) => {
+if(!localStorage.getItem("visibleFilter")) {
+    let initType = {
+        filter: "All",
+        classname: ["selected", "", ""]
+    }
+    localStorage.setItem("visibleFilter", JSON.stringify(initType));
+}
+
+let initTodos = JSON.parse(localStorage.getItem("todos"));
+let initType = JSON.parse(localStorage.getItem("visibleFilter"));
+
+
+const todos = (state = initTodos, action) => {
     switch (action.type) {
         /*修改state的方式要返回一个新的对象，才会自动渲染页面
         state 必须是不可变数据结构，splice 方法会修改原始数据，不能用于 Reducer*/
@@ -61,11 +77,32 @@ const todos = (state = initState, action) => {
     }
 }
 
-const visibleFilter = (state = "All", action) => {
+const visibleFilter = (state = initType, action) => {
+
     switch(action.type) {
         case "VISIBLE_FILTER":
-            return action.filter;
-            break;
+            switch(action.filter) {
+                case "All":
+                    return {
+                        filter: action.filter,
+                        classname: ["selected", "", ""]
+                    };
+                    break;
+                case "Active":
+                    return {
+                        filter: action.filter,
+                        classname: ["", "selected", ""]
+                    }
+                    break;
+                case "Completed":
+                    return {
+                        filter: action.filter,
+                        classname: ["", "", "selected"]
+                    };
+                    break;
+                default:
+                    return state
+            }
         default:
             return state
     }

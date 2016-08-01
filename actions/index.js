@@ -12,10 +12,11 @@ export const switchCompleted = (index) => {
   }
 }
 
-export const visibleFilter = (filter) => {
+export const visibleFilter = (filter, classname) => {
 	return{
 		type: 'VISIBLE_FILTER',
-		filter
+		filter,
+		classname
 	}
 }
 

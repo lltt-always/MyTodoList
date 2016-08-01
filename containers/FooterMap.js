@@ -4,7 +4,8 @@ import { visibleFilter, deleteCompleted } from '../actions'
 
 function mapStateToProps(state) {
   return {
-  	todos: state.todos
+  	todos: state.todos,
+  	classname: state.visibleFilter.classname
   };
 }
 
