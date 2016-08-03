@@ -1,30 +1,7 @@
 import { combineReducers } from 'redux'
+import { getInitState } from '../localStorage'
 
-
-if(!localStorage.getItem("todos")) {
-    let initTodos = [{
-        title: "learn react",
-        completed: false
-    },{
-        title: "learn redux",
-        completed: false
-    }];
-    localStorage.setItem("todos", JSON.stringify(initTodos));
-}
-
-if(!localStorage.getItem("visibleFilter")) {
-    let initType = {
-        filter: "All",
-        classname: ["selected", "", ""]
-    }
-    localStorage.setItem("visibleFilter", JSON.stringify(initType));
-}
-
-let initTodos = JSON.parse(localStorage.getItem("todos"));
-let initType = JSON.parse(localStorage.getItem("visibleFilter"));
-
-
-const todos = (state = initTodos, action) => {
+const todos = (state = getInitState.initTodos, action) => {
     switch (action.type) {
         /*修改state的方式要返回一个新的对象，才会自动渲染页面
         state 必须是不可变数据结构，splice 方法会修改原始数据，不能用于 Reducer*/
@@ -77,7 +54,7 @@ const todos = (state = initTodos, action) => {
     }
 }
 
-const visibleFilter = (state = initType, action) => {
+const visibleFilter = (state = getInitState.initType, action) => {
 
     switch(action.type) {
         case "VISIBLE_FILTER":

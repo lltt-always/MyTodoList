@@ -5,11 +5,10 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import mytodos from './reducers'
-import App from './components/App'
+import { store } from './store'
 
-let store = createStore(mytodos)
+import App from './components/App'
+import { setLocalStorage } from './localStorage'
 
 function newrender() {
 	render(
@@ -20,4 +19,6 @@ function newrender() {
 	)
 }
 
-newrender()
+store.subscribe(setLocalStorage);
+newrender();
+

@@ -22,7 +22,6 @@ class Footer extends Component {
     }
 
     render() {
-        console.log(this.props.classname)
         return(
             <footer className="footer">
                 <span className="todo-count">{this.findleft(this.props.todos)} items left</span>
