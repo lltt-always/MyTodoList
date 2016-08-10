@@ -1,5 +1,5 @@
 {
-  "name": "MyTodoList example",
+  "name": "my-todolist-example",
   "version": "0.0.0",
   "description": "MyTodoList example with react, redux and local storage.",
   "scripts": {
