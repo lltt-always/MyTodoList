@@ -1,7 +1,7 @@
 {
-  "name": "redux-todos-example",
+  "name": "MyTodoList example",
   "version": "0.0.0",
-  "description": "Redux Todos example",
+  "description": "MyTodoList example with react, redux and local storage.",
   "scripts": {
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
