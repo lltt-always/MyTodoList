@@ -1,5 +1,7 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+
+var publicPath = 'http://localhost:3010/';
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -10,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: publicPath
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
